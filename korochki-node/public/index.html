@@ -3,78 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Корочки.есть — Вход</title>
+    <title>Образовательный центр | Курсы программирования</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="site-header">
     <div class="container header-content">
-        <a href="index.html" class="logo">Корочки.есть</a>
-
+        <div class="logo">Образовательный центр</div>
         <nav class="nav">
-            <a href="index.html">Вход</a>
-            <a href="register.html">Регистрация</a>
+            <a href="index.html" class="nav-link active">Главная</a>
+            <a href="#" id="loginNavLink">Вход</a>
+            <a href="#" id="registerNavLink">Регистрация</a>
         </nav>
     </div>
 </header>
 
-<main class="container page-grid">
-    <section class="hero">
-        <div class="badge">Онлайн-обучение</div>
-
-        <h1>Запись на курсы дополнительного образования</h1>
-
-        <p>
-            Портал позволяет подать заявку на обучение, отслеживать статус заявки
-            и оставить отзыв после завершения курса.
+<main class="container">
+    <!-- Герой-секция -->
+    <div class="hero-section" style="text-align: center; padding: 60px 0 40px;">
+        <div class="badge" style="margin: 0 auto 20px;">🏆 Лицензированный центр</div>
+        <h1 style="font-size: clamp(40px, 6vw, 64px);">Образование,<br>которое меняет жизнь</h1>
+        <p style="font-size: 18px; max-width: 600px; margin: 20px auto; color: var(--muted);">
+            Профессиональные курсы по программированию, веб-дизайну и базам данных. 
+            Опытные преподаватели, удобный формат обучения.
         </p>
+        <div style="display: flex; gap: 16px; justify-content: center; margin-top: 30px;">
+            <button class="btn primary" id="heroLoginBtn">Начать обучение</button>
+            <button class="btn secondary" id="heroRegisterBtn">Узнать больше</button>
+        </div>
+    </div>
 
-        <div class="slider">
-            <button class="slider-btn" type="button" id="prevSlide">‹</button>
+    <!-- Преимущества -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 60px 0;">
+        <div style="text-align: center; padding: 24px;">
+            <div style="font-size: 48px; margin-bottom: 16px;">🎓</div>
+            <h3>Опытные преподаватели</h3>
+            <p class="muted">Практикующие специалисты с многолетним опытом</p>
+        </div>
+        <div style="text-align: center; padding: 24px;">
+            <div style="font-size: 48px; margin-bottom: 16px;">💻</div>
+            <h3>Современные программы</h3>
+            <p class="muted">Актуальные знания, востребованные на рынке</p>
+        </div>
+        <div style="text-align: center; padding: 24px;">
+            <div style="font-size: 48px; margin-bottom: 16px;">📜</div>
+            <h3>Официальный документ</h3>
+            <p class="muted">Сертификат государственного образца</p>
+        </div>
+        <div style="text-align: center; padding: 24px;">
+            <div style="font-size: 48px; margin-bottom: 16px;">🕐</div>
+            <h3>Гибкий график</h3>
+            <p class="muted">Учитесь в удобное время, совмещайте с работой</p>
+        </div>
+    </div>
 
-            <div class="slider-frame">
-                <img id="sliderImage" src="images/slide1.jpg" alt="Слайд">
+    <!-- Популярные курсы -->
+    <div style="margin: 60px 0;">
+        <h2 style="text-align: center; margin-bottom: 40px;">🔥 Популярные курсы</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div class="course-card" style="cursor: default;">
+                <h3>Основы алгоритмизации и программирования</h3>
+                <div class="course-duration">⏱ 3 месяца</div>
+                <p class="course-description">Изучите базовые концепции программирования, алгоритмы и структуры данных. Курс для начинающих без опыта.</p>
+                <div class="course-footer">
+                    <span class="course-price">15 000 ₽</span>
+                </div>
             </div>
-
-            <button class="slider-btn" type="button" id="nextSlide">›</button>
+            <div class="course-card" style="cursor: default;">
+                <h3>Основы веб-дизайна</h3>
+                <div class="course-duration">⏱ 2 месяца</div>
+                <p class="course-description">Освойте создание современных сайтов, изучите HTML, CSS, принципы UX/UI дизайна и адаптивную верстку.</p>
+                <div class="course-footer">
+                    <span class="course-price">12 000 ₽</span>
+                </div>
+            </div>
+            <div class="course-card" style="cursor: default;">
+                <h3>Основы проектирования баз данных</h3>
+                <div class="course-duration">⏱ 2.5 месяца</div>
+                <p class="course-description">Научитесь проектировать базы данных, писать SQL-запросы и оптимизировать производительность.</p>
+                <div class="course-footer">
+                    <span class="course-price">14 000 ₽</span>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <section class="card form-card">
-        <h2>Вход в систему</h2>
-
-        <p class="muted">
-            Введите логин и пароль.
-        </p>
-
-        <div id="message"></div>
-
-        <form class="form" id="loginForm">
-            <label>
-                Логин
-                <input type="text" name="login" placeholder="Введите логин" required>
-            </label>
-
-            <label>
-                Пароль
-                <input type="password" name="password" placeholder="Введите пароль" required>
-            </label>
-
-            <button class="btn primary" type="submit">Войти</button>
-        </form>
-
-        <p class="form-footer">
-            Еще не зарегистрированы?
-            <a href="register.html">Регистрация</a>
-        </p>
-
-        <div class="admin-hint">
-            <strong>Администратор:</strong> Admin / KorokNET
+    <!-- Отзывы -->
+    <div style="background: var(--primary-soft); border-radius: var(--radius); padding: 48px 32px; margin: 60px 0;">
+        <h2 style="text-align: center; margin-bottom: 40px;">❤️ Что говорят наши студенты</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <div style="background: white; border-radius: var(--radius-sm); padding: 24px;">
+                <p style="font-style: italic;">"Отличные курсы! После обучения устроился junior-разработчиком. Спасибо преподавателям за индивидуальный подход."</p>
+                <p style="margin-top: 16px; font-weight: 700;">— Анна С.</p>
+            </div>
+            <div style="background: white; border-radius: var(--radius-sm); padding: 24px;">
+                <p style="font-style: italic;">"Удобный формат обучения, много практики. Рекомендую всем, кто хочет сменить профессию на IT."</p>
+                <p style="margin-top: 16px; font-weight: 700;">— Дмитрий К.</p>
+            </div>
+            <div style="background: white; border-radius: var(--radius-sm); padding: 24px;">
+                <p style="font-style: italic;">"Курс по базам данных дал реальные знания, которые применяю на работе каждый день. Спасибо!"</p>
+                <p style="margin-top: 16px; font-weight: 700;">— Елена М.</p>
+            </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Формы входа и регистрации (скрыты по умолчанию) -->
+    <div id="loginFormContainer" style="display: none;">
+        <div class="page-grid" style="padding: 40px 0;">
+            <div class="card form-card">
+                <div class="badge">Добро пожаловать</div>
+                <h2>Вход в систему</h2>
+                <p class="muted">Введите свои данные для входа</p>
+                
+                <form id="loginForm" class="form">
+                    <label>
+                        Логин
+                        <input type="text" name="login" placeholder="Введите логин" required>
+                    </label>
+                    
+                    <label>
+                        Пароль
+                        <input type="password" name="password" placeholder="Введите пароль" required>
+                    </label>
+                    
+                    <div id="message"></div>
+                    
+                    <button class="btn primary" type="submit">Войти</button>
+                    
+                    <p class="form-footer">
+                        Нет аккаунта? 
+                        <a href="#" id="switchToRegister">Зарегистрироваться</a>
+                    </p>
+                </form>
+            </div>
+            
+            <div class="hero">
+                <div class="badge">Преимущества</div>
+                <h2>Начните обучение<br>прямо сейчас</h2>
+                <p>Войдите в личный кабинет, чтобы записаться на курсы, отслеживать статус заявок и оставлять отзывы.</p>
+                <ul style="margin-top: 24px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;">✅ Доступ к учебным материалам</li>
+                    <li style="margin-bottom: 12px;">✅ Личный кабинет студента</li>
+                    <li style="margin-bottom: 12px;">✅ Поддержка преподавателей</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerFormContainer" style="display: none;">
+        <div class="page-grid" style="padding: 40px 0;">
+            <div class="card form-card">
+                <div class="badge">Присоединяйтесь</div>
+                <h2>Регистрация</h2>
+                <p class="muted">Создайте аккаунт для обучения</p>
+                
+                <form id="registerForm" class="form">
+                    <label>
+                        Логин (латиница и цифры, мин. 6 символов)
+                        <input type="text" name="login" placeholder="Введите логин" required>
+                    </label>
+                    
+                    <label>
+                        Пароль (мин. 8 символов)
+                        <input type="password" name="password" placeholder="Введите пароль" required>
+                    </label>
+                    
+                    <label>
+                        ФИО (только кириллица)
+                        <input type="text" name="fullName" placeholder="Иванов Иван Иванович" required>
+                    </label>
+                    
+                    <label>
+                        Телефон (формат: 8(XXX)XXX-XX-XX)
+                        <input type="tel" name="phone" placeholder="8(999)123-45-67" required>
+                    </label>
+                    
+                    <label>
+                        Email
+                        <input type="email" name="email" placeholder="ivan@example.com" required>
+                    </label>
+                    
+                    <div id="message2"></div>
+                    
+                    <button class="btn primary" type="submit">Зарегистрироваться</button>
+                    
+                    <p class="form-footer">
+                        Уже есть аккаунт? 
+                        <a href="#" id="switchToLogin">Войти</a>
+                    </p>
+                </form>
+            </div>
+            
+            <div class="hero">
+                <div class="badge">Почему стоит выбрать нас</div>
+                <h2>Начните свой путь<br>в IT уже сегодня</h2>
+                <p>Зарегистрируйтесь и получите доступ к лучшим образовательным программам. Гибкие форматы обучения, рассрочка и поддержка на всех этапах.</p>
+            </div>
+        </div>
+    </div>
 </main>
 
-<script src="js/app.js"></script>
+<footer style="background: rgba(255, 250, 242, 0.9); border-top: 1px solid var(--border); margin-top: 60px; padding: 40px 0;">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
+            <div>
+                <div class="logo" style="margin-bottom: 16px;">Образовательный центр</div>
+                <p class="muted">Обучение профессиям будущего с 2020 года</p>
+            </div>
+            <div>
+                <h4>Контакты</h4>
+                <p class="muted">📞 8 (800) 123-45-67</p>
+                <p class="muted">✉ info@edu-center.ru</p>
+            </div>
+            <div>
+                <h4>Режим работы</h4>
+                <p class="muted">Пн-Пт: 9:00 - 20:00</p>
+                <p class="muted">Сб: 10:00 - 16:00</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <p class="muted">© 2025 Образовательный центр. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>

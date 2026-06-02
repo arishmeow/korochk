@@ -107,10 +107,11 @@ app.get('/api/me', (req, res) => {
     }
 
     if (req.session.userId) {
+        const user = db.getUserById(req.session.userId);
         return res.json({
             authorized: true,
             role: 'user',
-            fullName: req.session.fullName
+            fullName: user ? user.fullName : req.session.fullName
         });
     }
 
@@ -194,7 +195,7 @@ app.post('/api/login', async (req, res) => {
             });
         }
 
-        // Админ-логин (оставляем как было)
+        // Админ-логин
         if (login === 'Admin' && password === 'KorokNET') {
             req.session.isAdmin = true;
             req.session.userId = null;
@@ -460,6 +461,7 @@ app.patch('/api/admin/applications/:id/status', isAdmin, async (req, res) => {
     }
 });
 
+// Обработка 404
 app.use((req, res) => {
     res.status(404).send('Страница не найдена');
 });

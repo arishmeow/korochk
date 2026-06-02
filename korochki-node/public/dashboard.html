@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная | Образовательный центр</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-content">
+        <div class="logo">Образовательный центр</div>
+        <nav class="nav">
+            <a href="dashboard.html" class="nav-link active">Главная</a>
+            <a href="applications.html" class="nav-link">Мои заявки</a>
+            <button class="nav-button" id="logoutButton">Выйти</button>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <!-- Слайдер -->
+    <div class="slider-container" style="margin: 32px 0;">
+        <div class="slider">
+            <button class="slider-btn" id="prevSlide">◀</button>
+            <div class="slider-frame">
+                <img id="sliderImage" src="images/slide1.jpg" alt="Слайд">
+            </div>
+            <button class="slider-btn" id="nextSlide">▶</button>
+        </div>
+    </div>
+
+    <!-- Информационный блок -->
+    <div class="info-block">
+        <h2>Добро пожаловать, <span id="userName"></span>! 👋</h2>
+        <p class="muted" style="font-size: 18px;">Выберите курс, который вам интересен, и начните обучение уже сегодня</p>
+    </div>
+
+    <!-- Список курсов -->
+    <div class="courses-section">
+        <h2 style="margin-bottom: 24px;">📚 Доступные курсы</h2>
+        <div class="courses-grid" id="coursesGrid"></div>
+    </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

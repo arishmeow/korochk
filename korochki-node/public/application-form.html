@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новая заявка | Образовательный центр</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-content">
+        <div class="logo">Образовательный центр</div>
+        <nav class="nav">
+            <a href="dashboard.html" class="nav-link">Главная</a>
+            <a href="applications.html" class="nav-link">Мои заявки</a>
+            <button class="nav-button" id="logoutButton">Выйти</button>
+        </nav>
+    </div>
+</header>
+
+<main class="container single-page">
+    <div class="card form-card wide">
+        <h2>📝 Новая заявка на обучение</h2>
+        <p class="muted">Заполните форму, чтобы записаться на курс</p>
+        
+        <form id="applicationForm" class="form">
+            <label>
+                Выберите курс
+                <select name="courseName" required>
+                    <option value="">-- Выберите курс --</option>
+                    <option value="Основы алгоритмизации и программирования">Основы алгоритмизации и программирования</option>
+                    <option value="Основы веб-дизайна">Основы веб-дизайна</option>
+                    <option value="Основы проектирования баз данных">Основы проектирования баз данных</option>
+                </select>
+            </label>
+
+            <label>
+                Желаемая дата начала (ДД.ММ.ГГГГ)
+                <input type="text" name="startDate" placeholder="Например: 01.09.2025" required>
+            </label>
+
+            <label>
+                Способ оплаты
+                <select name="paymentMethod" required>
+                    <option value="">-- Выберите способ --</option>
+                    <option value="Наличными">Наличными</option>
+                    <option value="Переводом по номеру телефона">Переводом по номеру телефона</option>
+                </select>
+            </label>
+
+            <div id="message"></div>
+
+            <button class="btn primary" type="submit">Отправить заявку</button>
+        </form>
+    </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -535,3 +535,83 @@ td form {
         width: 100%;
     }
 }
+
+/* Стили для страницы курсов */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+    margin-bottom: 60px;
+}
+
+.course-card {
+    background: rgba(255, 250, 242, 0.94);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: transform var(--transition), box-shadow var(--transition);
+    cursor: pointer;
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 35px rgba(63, 52, 39, 0.12);
+}
+
+.course-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--primary-dark);
+}
+
+.course-description {
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.course-duration {
+    display: inline-block;
+    background: var(--primary-soft);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+}
+
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.course-price {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.btn.apply-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.btn.apply-btn:hover {
+    background: var(--primary-dark);
+}
+
+.slider-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+}

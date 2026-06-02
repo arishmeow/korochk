@@ -8,6 +8,52 @@ const slides = [
 let currentSlide = 0;
 let adminApplications = [];
 
+// Список курсов для отображения на dashboard
+const courses = [
+    {
+        id: 1,
+        name: "Основы алгоритмизации и программирования",
+        description: "Изучите базовые концепции программирования, алгоритмы и структуры данных. Курс для начинающих без опыта.",
+        duration: "3 месяца",
+        price: "15 000 ₽"
+    },
+    {
+        id: 2,
+        name: "Основы веб-дизайна",
+        description: "Освойте создание современных сайтов, изучите HTML, CSS, принципы UX/UI дизайна и адаптивную верстку.",
+        duration: "2 месяца",
+        price: "12 000 ₽"
+    },
+    {
+        id: 3,
+        name: "Основы проектирования баз данных",
+        description: "Научитесь проектировать базы данных, писать SQL-запросы и оптимизировать производительность.",
+        duration: "2.5 месяца",
+        price: "14 000 ₽"
+    },
+    {
+        id: 4,
+        name: "Fullstack-разработка на JavaScript",
+        description: "Полный курс по современной веб-разработке: frontend и backend на JavaScript.",
+        duration: "6 месяцев",
+        price: "35 000 ₽"
+    },
+    {
+        id: 5,
+        name: "Python для анализа данных",
+        description: "Изучите Python, библиотеки pandas, numpy и визуализацию данных для аналитики.",
+        duration: "4 месяца",
+        price: "25 000 ₽"
+    },
+    {
+        id: 6,
+        name: "Мобильная разработка на Flutter",
+        description: "Создавайте кроссплатформенные мобильные приложения для iOS и Android.",
+        duration: "5 месяцев",
+        price: "30 000 ₽"
+    }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
     initLoginForm();
@@ -22,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('adminTable')) {
         loadAdminApplications();
         initAdminFilter();
+    }
+
+    if (document.getElementById('coursesGrid')) {
+        loadDashboard();
     }
 });
 
@@ -85,7 +135,7 @@ function initLoginForm() {
         if (result.role === 'admin') {
             window.location.href = 'admin.html';
         } else {
-            window.location.href = 'applications.html';
+            window.location.href = 'dashboard.html';
         }
     });
 }
@@ -144,7 +194,7 @@ function initRegisterForm() {
         showMessage('Регистрация прошла успешно. Сейчас откроется страница входа.', 'success');
 
         setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = 'dashboard.html';
         }, 900);
     });
 }
@@ -152,6 +202,18 @@ function initRegisterForm() {
 function initApplicationForm() {
     const form = document.getElementById('applicationForm');
     if (!form) return;
+
+    const savedCourse = localStorage.getItem('selectedCourse');
+    if (savedCourse && form.courseName) {
+        const options = form.courseName.options;
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].value === savedCourse) {
+                options[i].selected = true;
+                break;
+            }
+        }
+        localStorage.removeItem('selectedCourse');
+    }
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -201,6 +263,57 @@ function initLogoutButton() {
     button.addEventListener('click', async () => {
         await sendRequest('/api/logout', 'POST', {});
         window.location.href = 'index.html';
+    });
+}
+
+async function loadDashboard() {
+    try {
+        const response = await sendRequest('/api/me', 'GET');
+        const userNameSpan = document.getElementById('userName');
+        
+        if (response.authorized && userNameSpan) {
+            userNameSpan.textContent = response.fullName || 'пользователь';
+        }
+    } catch (error) {
+        console.error('Ошибка загрузки пользователя:', error);
+    }
+    
+    displayCourses();
+}
+
+function displayCourses() {
+    const container = document.getElementById('coursesGrid');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    courses.forEach(course => {
+        const courseCard = document.createElement('div');
+        courseCard.className = 'course-card';
+        courseCard.setAttribute('data-course-id', course.id);
+        
+        courseCard.innerHTML = `
+            <h3>${escapeHtml(course.name)}</h3>
+            <div class="course-duration">⏱ ${course.duration}</div>
+            <p class="course-description">${escapeHtml(course.description)}</p>
+            <div class="course-footer">
+                <span class="course-price">${course.price}</span>
+                <button class="btn apply-btn" data-course-name="${escapeHtml(course.name)}">
+                    Подать заявку →
+                </button>
+            </div>
+        `;
+        
+        container.appendChild(courseCard);
+    });
+    
+    document.querySelectorAll('.apply-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const courseName = btn.getAttribute('data-course-name');
+            localStorage.setItem('selectedCourse', courseName);
+            window.location.href = 'application-form.html';
+        });
     });
 }
 

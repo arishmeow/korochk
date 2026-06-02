@@ -3,12 +3,12 @@ const path = require('path');
 
 const DB_PATH = path.join(__dirname, 'data.json');
 
-// Инициализация базы данных
+
 function initDB() {
     if (!fs.existsSync(DB_PATH)) {
         const initialData = {
             users: [
-                // Админ создается автоматически
+        
                 {
                     id: 1,
                     login: 'admin',
@@ -34,7 +34,7 @@ function saveDB(data) {
     fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
 }
 
-// ============= ПОЛЬЗОВАТЕЛИ =============
+
 
 function getUserByLogin(login) {
     const db = initDB();
@@ -49,7 +49,7 @@ function getUserById(id) {
 function createUser(userData) {
     const db = initDB();
     
-    // Проверка на существование логина
+
     if (db.users.find(u => u.login === userData.login)) {
         return null;
     }
@@ -65,7 +65,7 @@ function createUser(userData) {
     return newUser;
 }
 
-// ============= ЗАЯВКИ =============
+
 
 function getApplicationsByUser(userId) {
     const db = initDB();
@@ -74,7 +74,7 @@ function getApplicationsByUser(userId) {
 
 function getAllApplications() {
     const db = initDB();
-    // Добавляем данные пользователя к каждой заявке
+
     return db.applications.map(app => {
         const user = getUserById(app.userId);
         return {
@@ -131,7 +131,7 @@ function getApplicationById(id) {
     return db.applications.find(a => a.id === id);
 }
 
-// ============= СЕССИИ (простая реализация) =============
+
 
 const sessions = new Map();
 
