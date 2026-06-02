@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корочки.есть — Создание заявки</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-content">
+        <a href="applications.html" class="logo">Корочки.есть</a>
+
+        <nav class="nav">
+            <a href="applications.html">Мои заявки</a>
+            <a href="create_application.html">Создать заявку</a>
+            <button class="nav-button" type="button" id="logoutButton">Выход</button>
+        </nav>
+    </div>
+</header>
+
+<main class="container single-page">
+    <section class="card form-card wide">
+        <h1>Создание заявки</h1>
+
+        <p class="muted">
+            Выберите курс, дату начала обучения и способ оплаты.
+        </p>
+
+        <div id="message"></div>
+
+        <form class="form" id="applicationForm">
+            <label>
+                Наименование курса
+                <select name="courseName" required>
+                    <option value="">Выберите курс</option>
+                    <option value="Основы алгоритмизации и программирования">
+                        Основы алгоритмизации и программирования
+                    </option>
+                    <option value="Основы веб-дизайна">
+                        Основы веб-дизайна
+                    </option>
+                    <option value="Основы проектирования баз данных">
+                        Основы проектирования баз данных
+                    </option>
+                </select>
+            </label>
+
+            <label>
+                Желаемая дата начала обучения
+                <input type="text" name="startDate" placeholder="ДД.ММ.ГГГГ" required>
+                <span class="field-hint">Например: 25.06.2026</span>
+            </label>
+
+            <label>
+                Способ оплаты
+                <select name="paymentMethod" required>
+                    <option value="">Выберите способ оплаты</option>
+                    <option value="Наличными">Наличными</option>
+                    <option value="Переводом по номеру телефона">
+                        Переводом по номеру телефона
+                    </option>
+                </select>
+            </label>
+
+            <button class="btn primary" type="submit">Отправить заявку</button>
+        </form>
+    </section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

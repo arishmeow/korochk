@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "admin",
+      "password": "admin123",
+      "fullName": "Администратор",
+      "phone": "8(999)999-99-99",
+      "email": "admin@example.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "login": "zxczxc",
+      "password": "$2a$10$c1mMkRM.8mDJaJCfHf4cCeTQoeWdePCOK27HbLB94/pDnGRYN1OT2",
+      "fullName": "Гайданка Арина Станиславовна",
+      "phone": "8(909)566-66-91",
+      "email": "arishka.uchiha@yandex.ru",
+      "role": "user"
+    }
+  ],
+  "applications": [
+    {
+      "id": 1,
+      "userId": 2,
+      "courseName": "Основы веб-дизайна",
+      "startDate": "2002-12-12",
+      "paymentMethod": "Наличными",
+      "status": "Идет обучение",
+      "reviewText": null,
+      "createdAt": "2026-06-02T01:31:22.076Z"
+    }
+  ],
+  "nextId": {
+    "users": 3,
+    "applications": 2
+  }
+}

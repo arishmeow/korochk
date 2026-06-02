@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корочки.есть — Администратор</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-content">
+        <a href="admin.html" class="logo">Корочки.есть</a>
+
+        <nav class="nav">
+            <a href="admin.html">Админ-панель</a>
+            <button class="nav-button" type="button" id="logoutButton">Выход</button>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="page-title">
+        <div>
+            <h1>Панель администратора</h1>
+            <p class="muted">
+                Просмотр заявок пользователей и изменение статусов обучения.
+            </p>
+        </div>
+    </section>
+
+    <div id="message"></div>
+
+    <section class="admin-tools">
+        <label>
+            Фильтр по статусу
+            <select id="statusFilter">
+                <option value="">Все заявки</option>
+                <option value="Новая">Новая</option>
+                <option value="Идет обучение">Идет обучение</option>
+                <option value="Обучение завершено">Обучение завершено</option>
+            </select>
+        </label>
+    </section>
+
+    <section class="table-card">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ФИО</th>
+                        <th>Телефон</th>
+                        <th>Email</th>
+                        <th>Курс</th>
+                        <th>Дата</th>
+                        <th>Оплата</th>
+                        <th>Статус</th>
+                        <th>Отзыв</th>
+                        <th>Действие</th>
+                    </tr>
+                </thead>
+
+                <tbody id="adminTable">
+                    <tr>
+                        <td colspan="9">Загрузка заявок...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

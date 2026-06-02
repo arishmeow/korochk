@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корочки.есть — Мои заявки</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-content">
+        <a href="applications.html" class="logo">Корочки.есть</a>
+
+        <nav class="nav">
+            <a href="applications.html">Мои заявки</a>
+            <a href="create_application.html">Создать заявку</a>
+            <button class="nav-button" type="button" id="logoutButton">Выход</button>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="page-title">
+        <div>
+            <h1>Мои заявки</h1>
+            <p class="muted">
+                Здесь отображаются ваши заявки на обучение.
+            </p>
+        </div>
+
+        <a href="create_application.html" class="btn primary small">Новая заявка</a>
+    </section>
+
+    <div id="message"></div>
+
+    <section class="cards-list" id="applicationsList">
+        <div class="empty">Загрузка заявок...</div>
+    </section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

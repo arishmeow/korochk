@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корочки.есть — Регистрация</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-content">
+        <a href="index.html" class="logo">Корочки.есть</a>
+
+        <nav class="nav">
+            <a href="index.html">Вход</a>
+            <a href="register.html">Регистрация</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container single-page">
+    <section class="card form-card wide">
+        <h1>Регистрация</h1>
+
+        <p class="muted">
+            Заполните форму. Все поля обязательны.
+        </p>
+
+        <divd="message"></divd=>
+
+        <form class="form" id="registerForm">
+            <label>
+                Логин
+                <input type="text" name="login" placeholder="student01" required>
+                <span class="field-hint">Латиница и цифры, минимум 6 символов.</span>
+            </label>
+
+            <label>
+                Пароль
+                <input type="password" name="password" placeholder="Минимум 8 символов" required>
+            </label>
+
+            <label>
+                ФИО
+                <input type="text" name="fullName" placeholder="Иванов Иван Иванович" required>
+                <span class="field-hint">Только кириллица и пробелы.</span>
+            </label>
+
+            <label>
+                Телефон
+                <input type="text" name="phone" placeholder="8(999)123-45-67" required>
+            </label>
+
+            <label>
+                Email
+                <input type="email" name="email" placeholder="student@mail.ru" required>
+            </label>
+
+            <button class="btn primary" type="submit">Зарегистрироваться</button>
+        </form>
+
+        <p class="form-footer">
+            Уже зарегистрированы?
+            <a href="index.html">Войти</a>
+        </p>
+    </section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>
